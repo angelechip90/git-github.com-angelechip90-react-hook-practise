@@ -12,15 +12,11 @@ function App() {
     <div className="app">
       <p>Header</p>
 
-      <p className='link-list'><Link to="/clock">Clock</Link></p>
+      {/* <p className='link-list'><Link to="/clock">Clock</Link></p>
       <p className='link-list'><Link to="/hero">Hero</Link></p>
       <p className='link-list'><Link to="/magicbox">Magic box</Link></p>
       <p className='link-list'><Link to="/post">Post List</Link></p>
-      <p className='link-list'><Link to="/todo">Todo List</Link></p>
-      <p>
-
-      </p>
-
+      <p className='link-list'><Link to="/todo">Todo List</Link></p> */}
       <p className='link-list'><NavLink to="/clock">Clock</NavLink></p>
       <p className='link-list'><NavLink to="/hero">Hero</NavLink></p>
       <p className='link-list'><NavLink to="/magicbox">Magic box</NavLink></p>
