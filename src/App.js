@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import { Link, NavLink, Route } from 'react-router-dom';
 import './App.css';
 import ClockFeature from './features/Clock';
 import HeroFeature from './features/Hero';
@@ -34,7 +33,7 @@ function App() {
       <Route path="/post" component={PostFeatures} />
       <Route path="/todo" component={TodoListFeature} />
 
-      Footer
+      <p>Footer</p>
 
       {/* <h1>Clock</h1>
       <ClockFeature />
