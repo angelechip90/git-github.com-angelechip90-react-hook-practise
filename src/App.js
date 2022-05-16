@@ -13,7 +13,7 @@ function App() {
   useEffect(()=>{
     const fetchProducts = async()=>{
       const params = {
-        _limit:10,        
+        _limit:10,
       }
       const productList = await productAPI.getAll(params);
       console.log(productList);
@@ -47,6 +47,7 @@ function App() {
         <Redirect from='/home' to='/' exact />
         <Redirect from='/post-list/:postID' to='/posts/:postID' />
 
+        <Route path="/" component={ClockFeature} exact />
         <Route path="/clock" component={ClockFeature} exact />
         <Route path="/hero" component={HeroFeature} exact />
         <Route path="/magicbox" component={MagicBoxFeature} exact />
