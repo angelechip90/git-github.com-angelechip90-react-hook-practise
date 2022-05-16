@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import notfound from '../../img/notfound.jpg';
 
 NotFound.propTypes = {
 
@@ -8,7 +9,7 @@ NotFound.propTypes = {
 function NotFound(props) {
     return (
         <div>
-            Not Found
+            <img src={notfound} width="100%" />
         </div>
     );
 }

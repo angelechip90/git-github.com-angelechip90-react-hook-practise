@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import productAPI from './api/productAPI';
 import './App.css';
 import NotFound from './components/NotFound';
 import ClockFeature from './features/Clock';
@@ -9,6 +10,19 @@ import PostFeatures from './features/PostList/Index';
 import TodoListFeature from './features/TodoList';
 
 function App() {
+  useEffect(()=>{
+    const fetchProducts = async()=>{
+      const params = {
+        _limit:10,        
+      }
+      const productList = await productAPI.getAll(params);
+      console.log(productList);
+      
+    }
+
+    fetchProducts();
+  },[]);
+
   return (
     <div className="app">
       <p>Header</p>

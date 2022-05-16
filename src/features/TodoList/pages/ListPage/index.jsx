@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import queryString from 'query-string';
 import TodoFilter from '../../components/TodoFilter';
 
 import TodoForm from '../../components/TodoForm';
@@ -15,8 +17,15 @@ function ListPage(props) {
         { id: 3, title: 'Coding and Finishing The Task', status: 'new' },
     ]);
 
-    const [filterValue, setFilterValue] = useState('all');
-    const listTodo = useRef(todos);
+    const location = useLocation();
+
+    //dùng queryString để lấy param trên location qua location.search
+    const [filterValue, setFilterValue] = useState(() => {
+        const param = queryString.parse(location.search);
+        return param.status || 'all';
+    });
+
+    //const listTodo = useRef(todos);
 
     function handleDeleteOnClick(todo) {
         const index = todos.findIndex(x => x.id === todo.id);
@@ -35,7 +44,7 @@ function ListPage(props) {
             ...newTodoList[idx],
             status: newTodoList[idx].status === 'new' ? 'completed' : 'new',
         }
-        listTodo.current = newTodoList;
+        //listTodo.current = newTodoList;
         setTodos(newTodoList);
     }
 
@@ -48,17 +57,37 @@ function ListPage(props) {
         }
         const newTodoList = [...todos];
         newTodoList.push(newTodo);
-        listTodo.current = newTodoList;
+        //listTodo.current = newTodoList;
         setTodos(newTodoList);
         console.log(newTodo);
     }
 
-    function handleFilterClick(status) {
-        const newTodos = [...listTodo.current];
-        const renderedTodoList = newTodos.filter(todo => status === 'all' || status === todo.status);
-        setTodos(renderedTodoList);
-        setFilterValue(status);
+    const handleShowAllClick = () => {
+        setFilterValue('all');
     }
+    const handleShowCompletedClick = () => {
+        setFilterValue('completed');
+    }
+    const handleShowNewClick = () => {
+        setFilterValue('new');
+    }
+
+    //const newTodos = [...listTodo.current];
+    //const renderedTodoList = todos.filter(todo => filterValue === 'all' || filterValue === todo.status);
+
+    //use memo dùng khi và chỉ khi cái todos hoặc filtervalue thay đổi thì cái list mới thay đổi, không thì lấy giá trị bình thường
+    const renderedTodoList = useMemo(() => {
+        return todos.filter(todo => filterValue === 'all' || filterValue === todo.status);
+    }, [todos, filterValue]);
+
+    //setTodos(renderedTodoList);
+
+    // function handleFilterClick(status) {
+    //     const newTodos = [...listTodo.current];
+    //     const renderedTodoList = newTodos.filter(todo => status === 'all' || status === todo.status);
+    //     setTodos(renderedTodoList);
+    //     setFilterValue(status);
+    // }
 
 
     return (
@@ -66,8 +95,13 @@ function ListPage(props) {
             <h2>Todo List</h2>
             <TodoForm onSubmit={handleTodoFormSubmit} />
             {/* <TodoList todos={todos} onTodoClick={handleDeleteOnClick} /> */}
-            <TodoList todos={todos} onTodoClick={handleChangeStatusOnClick} />
-            <TodoFilter onFilterClick={handleFilterClick} />
+            <TodoList todos={renderedTodoList} onTodoClick={handleChangeStatusOnClick} />
+            {/* <TodoFilter onFilterClick={handleFilterClick} /> */}
+            <div>
+                <button onClick={handleShowAllClick}>Show All</button>
+                <button onClick={handleShowCompletedClick}>Show Completed</button>
+                <button onClick={handleShowNewClick}>Show New</button>
+            </div>
 
         </div>
     );
