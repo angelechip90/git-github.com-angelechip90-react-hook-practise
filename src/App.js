@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import NotFound from './components/NotFound';
 import ClockFeature from './features/Clock';
 import HeroFeature from './features/Hero';
 import MagicBoxFeature from './features/MagicBox';
@@ -17,17 +18,31 @@ function App() {
       <p className='link-list'><Link to="/magicbox">Magic box</Link></p>
       <p className='link-list'><Link to="/post">Post List</Link></p>
       <p className='link-list'><Link to="/todo">Todo List</Link></p> */}
+
       <p className='link-list'><NavLink to="/clock">Clock</NavLink></p>
       <p className='link-list'><NavLink to="/hero">Hero</NavLink></p>
       <p className='link-list'><NavLink to="/magicbox">Magic box</NavLink></p>
       <p className='link-list'><NavLink to="/post">Post List</NavLink></p>
-      <p className='link-list'><NavLink to="/todo">Todo List</NavLink></p>
+      <p className='link-list'><NavLink to="/todos-list">Todo List</NavLink></p>
 
-      <Route path="/clock" component={ClockFeature} />
-      <Route path="/hero" component={HeroFeature} />
-      <Route path="/magicbox" component={MagicBoxFeature} />
-      <Route path="/post" component={PostFeatures} />
-      <Route path="/todo" component={TodoListFeature} />
+      {/* cái Switch nó hiển thị cái route nào math với cái path và chỉ lấy
+      duy nhất cái đầu tiên */}
+      {/* exact mặc định là false nhưng khi nhập vô thì là true */}
+      <Switch>
+        {/* <Redirect from='/home' to='/' /> */}
+        <Redirect from='/home' to='/' exact />
+        <Redirect from='/post-list/:postID' to='/posts/:postID' />
+
+        <Route path="/clock" component={ClockFeature} exact />
+        <Route path="/hero" component={HeroFeature} exact />
+        <Route path="/magicbox" component={MagicBoxFeature} exact />
+        <Route path="/post" component={PostFeatures} exact />
+        <Route path="/todos-list" component={TodoListFeature} />
+
+        <Route component={NotFound} />
+      </Switch>
+
+
 
       <p>Footer</p>
 
