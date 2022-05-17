@@ -59,7 +59,7 @@ function ListPage(props) {
     setTodos(newTodoList);
   };
 
-  function handleTodoFormSubmit1(formValues) {
+  function handleTodoFormSubmit_old(formValues) {
     console.log('Form Submit: ', formValues);
     const newTodo = {
       id: todos.length + 5,
