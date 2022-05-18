@@ -32,9 +32,12 @@ function PasswordField(props) {
     setShowPassword((x) => !x);
   };
 
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
   return (
     <div>
-      {/* <Controller
+      <Controller
         render={({ field: { onChange, onBlur, value, name, ref } }) => (
           <TextField
             value={value}
@@ -47,17 +50,29 @@ function PasswordField(props) {
             variant="outlined"
             margin="normal"
             fullWidth
+            type={showPassword ? 'text' : 'password'} // <-- This is where the magic happens
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         )}
         name={name}
         control={form.control}
         rules={{ required: true }}
-      /> */}
-      <FormControl variant="outlined" fullWidth margin="normal">
+      />
+      {/* <FormControl variant="outlined" fullWidth margin="normal">
         <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
-        <Controller
-          name={name}
-          control={form.control}
+        <OutlinedInput
           id={name}
           type={showPassword ? 'text' : 'password'}
           label={label}
@@ -69,7 +84,7 @@ function PasswordField(props) {
             </InputAdornment>
           }
         />
-      </FormControl>
+      </FormControl> */}
     </div>
   );
 }
