@@ -1,12 +1,8 @@
-import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { TextField } from '@mui/material';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Controller } from 'react-hook-form';
@@ -22,10 +18,11 @@ PasswordField.propTypes = {
 function PasswordField(props) {
   const { form, name, label, disabled } = props;
   const {
-    formState,
+    //formState,
     formState: { errors },
   } = form;
-  const hasError = errors[name] && formState.touchedFields[name];
+  //const hasError = errors[name] && formState.touchedFields[name];
+  const hasError = errors[name];
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleShowPassword = () => {

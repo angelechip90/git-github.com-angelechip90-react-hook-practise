@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { makeStyles } from '@material-ui/core';
-import { LockOutlined } from '@material-ui/icons';
+import { LockOutlined, YouTube } from '@material-ui/icons';
 import { Avatar, Button, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -60,10 +60,22 @@ function RegisterForm(props) {
   // }
 
   const schema = yup.object().shape({
-    fullName: yup.string().required('Please enter title').min(5, 'Title is too short'),
-    email: yup.string().required('Please enter email').min(5, 'Title is too short'),
-    password: yup.string().required('Please enter Password').min(5, 'Title is too short'),
-    retypePassword: yup.string().required('Please enter Retype Password').min(5, 'Title is too short'),
+    fullName: yup.string().required('Please enter your Full Name')
+      .test('Should has at least two words', 'Please enter at least two words', value => {
+        return value.split(' ').length >= 2;
+      }),
+    email: yup.string()
+      .required('Please enter your Email')
+      .email('Please enter a valid Email'),
+    password: yup.string().required('Please enter your Password')
+      .min(6, 'Please enter at least 6 characters.'),
+    retypePassword: yup.string().required('Please enter your Retype Password')
+      .oneOf([yup.ref('password')], 'Password does not match'),
+
+    // fullName: yup.string().required('Please enter title').min(5, 'Title is too short'),
+    // email: yup.string().required('Please enter email').min(5, 'Title is too short'),
+    // password: yup.string().required('Please enter Password').min(5, 'Title is too short'),
+    // retypePassword: yup.string().required('Please enter Retype Password').min(5, 'Title is too short'),
   });
 
   const form = useForm({
