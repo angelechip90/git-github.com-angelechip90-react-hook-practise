@@ -7,12 +7,12 @@ const counterSlice = createSlice({
         increase(state) {
             return state + 1;
         },
-        descrease(state) {
+        decrease(state) {
             return state - 1;
         },
     }
 });
 
 const { actions, reducer } = counterSlice;
-export const { increase, descrease } = actions;
+export const { increase, decrease } = actions;
 export default reducer;

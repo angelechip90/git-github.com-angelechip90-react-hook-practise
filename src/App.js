@@ -3,11 +3,25 @@ import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import productAPI from './api/productAPI';
 import './App.css';
 import NotFound from './components/NotFound';
+import AlbumFeature from './features/Album';
+import AlbumList from './features/Album/components/AlbumList';
 import ClockFeature from './features/Clock';
+import CounterFeature from './features/Counter';
 import HeroFeature from './features/Hero';
 import MagicBoxFeature from './features/MagicBox';
 import PostFeatures from './features/PostList/Index';
 import TodoListFeature from './features/TodoList';
+import styled from 'styled-components';
+import Header from './components/Header';
+
+
+//CSS in JS
+const Title = styled.h1`
+  text-align:center;
+  font-weight:bold;
+  color: ${props => props.color || 'green'};
+`;
+
 
 function App() {
   useEffect(()=>{
@@ -25,7 +39,8 @@ function App() {
 
   return (
     <div className="app">
-      <p>Header</p>
+      <Header/>
+      {/* <Title color='goldenrod'>HEADING</Title> */}
 
       {/* <p className='link-list'><Link to="/clock">Clock</Link></p>
       <p className='link-list'><Link to="/hero">Hero</Link></p>
@@ -33,11 +48,13 @@ function App() {
       <p className='link-list'><Link to="/post">Post List</Link></p>
       <p className='link-list'><Link to="/todo">Todo List</Link></p> */}
 
-      <p className='link-list'><NavLink to="/clock">Clock</NavLink></p>
+      {/* <p className='link-list'><NavLink to="/clock">Clock</NavLink></p>
       <p className='link-list'><NavLink to="/hero">Hero</NavLink></p>
       <p className='link-list'><NavLink to="/magicbox">Magic box</NavLink></p>
       <p className='link-list'><NavLink to="/post">Post List</NavLink></p>
       <p className='link-list'><NavLink to="/todos-list">Todo List</NavLink></p>
+      <p className='link-list'><NavLink to="/counter">Counter</NavLink></p>
+      <p className='link-list'><NavLink to="/album">Album</NavLink></p> */}
 
       {/* cái Switch nó hiển thị cái route nào math với cái path và chỉ lấy
       duy nhất cái đầu tiên */}
@@ -53,13 +70,12 @@ function App() {
         <Route path="/magicbox" component={MagicBoxFeature} exact />
         <Route path="/post" component={PostFeatures} exact />
         <Route path="/todos-list" component={TodoListFeature} />
+        <Route path="/counter" component={CounterFeature} />
+        <Route path="/album" component={AlbumFeature} />
 
-        <Route component={NotFound} />
+        {/* <Route component={NotFound} /> */}
       </Switch>
 
-
-
-      <p>Footer</p>
 
       {/* <h1>Clock</h1>
       <ClockFeature />
