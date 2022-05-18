@@ -61,9 +61,9 @@ function RegisterForm(props) {
 
   const schema = yup.object().shape({
     fullName: yup.string().required('Please enter title').min(5, 'Title is too short'),
-    email: yup.string().required('Please enter title').min(5, 'Title is too short'),
-    password: yup.string().required('Please enter title').min(5, 'Title is too short'),
-    retypePassword: yup.string().required('Please enter title').min(5, 'Title is too short'),
+    email: yup.string().required('Please enter email').min(5, 'Title is too short'),
+    password: yup.string().required('Please enter Password').min(5, 'Title is too short'),
+    retypePassword: yup.string().required('Please enter Retype Password').min(5, 'Title is too short'),
   });
 
   const form = useForm({
