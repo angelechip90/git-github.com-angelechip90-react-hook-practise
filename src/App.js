@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
-import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
-import productAPI from './api/productAPI';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 import './App.css';
-import NotFound from './components/NotFound';
+import Header from './components/Header';
 import AlbumFeature from './features/Album';
-import AlbumList from './features/Album/components/AlbumList';
 import ClockFeature from './features/Clock';
 import CounterFeature from './features/Counter';
 import HeroFeature from './features/Hero';
 import MagicBoxFeature from './features/MagicBox';
 import PostFeatures from './features/PostList/Index';
-import TodoListFeature from './features/TodoList';
-import styled from 'styled-components';
-import Header from './components/Header';
 import ProductFeature from './features/Product/index';
+import TodoListFeature from './features/TodoList';
 
 
 //CSS in JS
@@ -25,18 +22,18 @@ const Title = styled.h1`
 
 
 function App() {
-  useEffect(()=>{
-    const fetchProducts = async()=>{
-      const params = {
-        _limit:10,
-      }
-      const productList = await productAPI.getAll(params);
-      console.log(productList);
+  // useEffect(()=>{
+  //   const fetchProducts = async()=>{
+  //     const params = {
+  //       _limit:10,
+  //     }
+  //     const productList = await productAPI.getAll(params);
+  //     console.log(productList);
       
-    }
+  //   }
 
-    fetchProducts();
-  },[]);
+  //   fetchProducts();
+  // },[]);
 
   return (
     <div className="app">
