@@ -13,6 +13,7 @@ import PostFeatures from './features/PostList/Index';
 import TodoListFeature from './features/TodoList';
 import styled from 'styled-components';
 import Header from './components/Header';
+import ProductFeature from './features/Product/index';
 
 
 //CSS in JS
@@ -72,6 +73,7 @@ function App() {
         <Route path="/todos-list" component={TodoListFeature} />
         <Route path="/counter" component={CounterFeature} />
         <Route path="/album" component={AlbumFeature} />
+        <Route path="/products" component={ProductFeature} />
 
         {/* <Route component={NotFound} /> */}
       </Switch>

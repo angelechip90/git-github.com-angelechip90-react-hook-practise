@@ -52,6 +52,9 @@ export default function Header() {
               React Demo
             </Link>
           </Typography>
+          <NavLink to="/products" className={classes.link}>
+            <Button color="inherit">Products</Button>
+          </NavLink>
 
           <NavLink to="/clock" className={classes.link}>
             <Button color="inherit">Clock</Button>
