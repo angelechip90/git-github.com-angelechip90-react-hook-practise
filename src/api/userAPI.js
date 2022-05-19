@@ -31,7 +31,7 @@ const userAPI = {
     },
 
     register(data) {
-        const url = `/auth/local/register`;
+        const url = '/auth/local/register';
         return axiosClient.patch(url, data);
     }
 

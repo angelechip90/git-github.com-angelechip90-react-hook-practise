@@ -34,6 +34,16 @@
             "salePrice": 25000000
         }
     ],
+    "users" : [
+        {
+            "id":1,
+            "username":"phuongnguyen",
+            "email":"phuongnguyen@gmail.com",
+            "password":"123123",
+            "createdAt": 1616346753759,
+            "updatedAt": 1616346753759            
+        }
+    ]
     "profile":{
         "name": "Bụi"
     }
