@@ -91,9 +91,9 @@ export default function Header() {
 
       <Dialog
         disableEscapeKeyDown
-        onBackdropClick
+        //onBackdropClick
         open={open}
-        onClose={handleClose}
+        //onClose={handleClose}
         aria-labelledby="form-dialog-title"
         fullWidth
       >

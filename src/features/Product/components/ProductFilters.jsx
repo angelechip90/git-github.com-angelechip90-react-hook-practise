@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FilterByCategory from './Filters/FilterByCategory';
 import { Box } from '@mui/material';
 import FilterByPrice from './Filters/FilterByPrice';
+import FilterByService from './Filters/FilterByService';
 
 ProductFilters.propTypes = {
   filters: PropTypes.object.isRequired,
@@ -12,12 +13,18 @@ ProductFilters.propTypes = {
 function ProductFilters({ filters, onChange }) {
   const handleCategoryChange = (newCategoryID) => {
     if (!onChange) return;
-    const newFilters = {
-      'category.id': newCategoryID,
-    };
-    onChange(newFilters);
+    if (newCategoryID > 0) {
+      const newFilters = {
+        'category.id': newCategoryID,
+      };
+      onChange(newFilters);
+    } else {
+      const newFilters = { ...filters };
+      delete newFilters['category.id'];
+      onChange(newFilters);
+    }
   };
-  const handlePriceChange = (values) => {
+  const handleChange = (values) => {
     if (!onChange) return;
     onChange(values);
   };
@@ -25,7 +32,8 @@ function ProductFilters({ filters, onChange }) {
   return (
     <Box>
       <FilterByCategory onChange={handleCategoryChange} />
-      <FilterByPrice onChange={handlePriceChange} />
+      <FilterByPrice onChange={handleChange} />
+      <FilterByService filters={filters} onChange={handleChange} />
     </Box>
   );
 }
