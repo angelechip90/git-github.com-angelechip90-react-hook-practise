@@ -56,9 +56,9 @@ function FilterByCategory({ onChange }) {
     <Box className={classes.root}>
       <Typography variant="subtitle2">DANH MỤC SẢN PHẨM</Typography>
       <ul className={classes.menu}>
-        {/* <li key="0" onClick={() => handleCategoryClick(null)}>
+        <li key="0" onClick={() => handleCategoryClick(null)}>
           <Typography variant="body2"> Tất cả</Typography>
-        </li> */}
+        </li>
         {categoryList.map((category) => (
           <li key={category.id} onClick={() => handleCategoryClick(category)}>
             <Typography variant="body2"> {category.name}</Typography>
