@@ -1,16 +1,15 @@
 import { Container, Grid, makeStyles, Paper } from '@material-ui/core';
-import { Box } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
+import queryString from 'query-string';
 import React, { useEffect, useMemo, useState } from 'react';
-import { Pagination } from '@mui/material';
+import { useHistory } from '../../../../node_modules/react-router-dom/cjs/react-router-dom.min';
+import { useLocation } from '../../../../node_modules/react-router-dom/index';
 import productAPI from '../../../api/productAPI';
+import FilterViewer from '../components/FilterViewer';
+import ProductFilters from '../components/ProductFilters';
 import ProductList from '../components/ProductList';
 import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductSort from '../components/ProductSort';
-import ProductFilters from '../components/ProductFilters';
-import FilterViewer from '../components/FilterViewer';
-import { useHistory } from '../../../../node_modules/react-router-dom/cjs/react-router-dom.min';
-import queryString from 'query-string';
-import { useLocation } from '../../../../node_modules/react-router-dom/index';
 
 ListPage.propTypes = {};
 
