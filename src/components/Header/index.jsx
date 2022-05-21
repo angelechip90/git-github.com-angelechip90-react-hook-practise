@@ -60,29 +60,29 @@ export default function Header() {
             <Button color="inherit">Clock</Button>
           </NavLink>
 
-          <NavLink to="/hero" className={classes.link}>
+          {/* <NavLink to="/hero" className={classes.link}>
             <Button color="inherit">Hero</Button>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/magicbox" className={classes.link}>
             <Button color="inherit">Magic box</Button>
           </NavLink>
 
-          <NavLink to="/post" className={classes.link}>
+          {/* <NavLink to="/post" className={classes.link}>
             <Button color="inherit">Post List</Button>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/todos-list" className={classes.link}>
             <Button color="inherit">Todo List</Button>
           </NavLink>
 
-          <NavLink to="/counter" className={classes.link}>
+          {/* <NavLink to="/counter" className={classes.link}>
             <Button color="inherit">Counter</Button>
-          </NavLink>
+          </NavLink> */}
 
-          <NavLink to="/album" className={classes.link}>
+          {/* <NavLink to="/album" className={classes.link}>
             <Button color="inherit">Album</Button>
-          </NavLink>
+          </NavLink> */}
           <Button color="inherit" onClick={handleClickOpen}>
             Register
           </Button>
