@@ -29,7 +29,7 @@ function App() {
   //     }
   //     const productList = await productAPI.getAll(params);
   //     console.log(productList);
-      
+
   //   }
 
   //   fetchProducts();
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header/>
+      <Header />
       {/* <Title color='goldenrod'>HEADING</Title> */}
 
       {/* <p className='link-list'><Link to="/clock">Clock</Link></p>
@@ -62,7 +62,7 @@ function App() {
         <Redirect from='/home' to='/' exact />
         <Redirect from='/post-list/:postID' to='/posts/:postID' />
 
-        <Route path="/" component={ClockFeature} exact />
+        <Route path="/" component={ProductFeature} exact />
         <Route path="/clock" component={ClockFeature} exact />
         <Route path="/hero" component={HeroFeature} exact />
         <Route path="/magicbox" component={MagicBoxFeature} exact />
